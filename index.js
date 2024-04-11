@@ -54,10 +54,19 @@ function validateMessage() {
   let message = document.getElementById("contact-message").value;
   let requiredChars = 30;
   let charsLeft = requiredChars - message.length;
-  if (left > 0) {
+  if (charsLeft > 0) {
     messageError.innerHTML = charsLeft + " more characters required";
     return false;
   }
   messageError.innerHTML = '<i class="fa-regular fa-circle-check"></i>';
   return true;
+}
+
+function validateForm(){
+    if(!validateName() || !validatePhone() || !validateEmail() || !validateMessage()){
+        submitError.style.display = "block"
+        submitError.innerHTML = "Please fix error to submit"
+        setTimeout(function(){submitError.style.display = "none";},3000);
+        return false;
+    }
 }
